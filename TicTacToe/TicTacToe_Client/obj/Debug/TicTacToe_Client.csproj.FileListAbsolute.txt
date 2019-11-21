@@ -1,0 +1,9 @@
+C:\Users\dangn\source\repos\TicTacToe\TicTacToe_Client\bin\Debug\TicTacToe_Client.exe.config
+C:\Users\dangn\source\repos\TicTacToe\TicTacToe_Client\bin\Debug\TicTacToe_Client.exe
+C:\Users\dangn\source\repos\TicTacToe\TicTacToe_Client\bin\Debug\TicTacToe_Client.pdb
+C:\Users\dangn\source\repos\TicTacToe\TicTacToe_Client\obj\Debug\TicTacToe_Client.Properties.Resources.resources
+C:\Users\dangn\source\repos\TicTacToe\TicTacToe_Client\obj\Debug\TicTacToe_Client.csproj.GenerateResource.cache
+C:\Users\dangn\source\repos\TicTacToe\TicTacToe_Client\obj\Debug\TicTacToe_Client.exe
+C:\Users\dangn\source\repos\TicTacToe\TicTacToe_Client\obj\Debug\TicTacToe_Client.pdb
+C:\Users\dangn\source\repos\TicTacToe\TicTacToe_Client\obj\Debug\TicTacToe_Client.csprojAssemblyReference.cache
+C:\Users\dangn\source\repos\TicTacToe\TicTacToe_Client\obj\Debug\TicTacToeServer.Form1.resources

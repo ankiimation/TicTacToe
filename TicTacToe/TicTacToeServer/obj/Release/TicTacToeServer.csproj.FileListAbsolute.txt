@@ -1,0 +1,7 @@
+C:\Users\dangn\source\repos\TicTacToe\TicTacToeServer\bin\Release\TicTacToeServer.exe.config
+C:\Users\dangn\source\repos\TicTacToe\TicTacToeServer\bin\Release\TicTacToeServer.exe
+C:\Users\dangn\source\repos\TicTacToe\TicTacToeServer\bin\Release\TicTacToeServer.pdb
+C:\Users\dangn\source\repos\TicTacToe\TicTacToeServer\obj\Release\TicTacToeServer.Properties.Resources.resources
+C:\Users\dangn\source\repos\TicTacToe\TicTacToeServer\obj\Release\TicTacToeServer.csproj.GenerateResource.cache
+C:\Users\dangn\source\repos\TicTacToe\TicTacToeServer\obj\Release\TicTacToeServer.exe
+C:\Users\dangn\source\repos\TicTacToe\TicTacToeServer\obj\Release\TicTacToeServer.pdb
