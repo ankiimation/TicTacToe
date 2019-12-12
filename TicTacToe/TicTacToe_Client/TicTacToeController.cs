@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 namespace TicTacToeServer
 {
     static class TicTacToeController
-    {
-        public static int[,] desk = new int[3, 3];
+    { 
+        public static int DESK_SIZE = 20;
+        public static int[,] desk = new int[DESK_SIZE, DESK_SIZE];
 
         static TicTacToeController()
         {
@@ -19,9 +20,9 @@ namespace TicTacToeServer
 
         public static void newGame()
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < DESK_SIZE; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < DESK_SIZE; j++)
                 {
                     desk[i, j] = 0;
                 }
@@ -35,9 +36,9 @@ namespace TicTacToeServer
 
         public static bool canMove()
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < DESK_SIZE; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < DESK_SIZE; j++)
                 {
                     if (desk[i, j] == 0)
                         return true;
@@ -45,6 +46,9 @@ namespace TicTacToeServer
             }
             return false;
         }
+
+    
+        
 
        
 

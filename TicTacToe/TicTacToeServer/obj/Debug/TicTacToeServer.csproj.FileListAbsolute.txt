@@ -7,3 +7,13 @@ C:\Users\dangn\source\repos\TicTacToe\TicTacToeServer\bin\Debug\TicTacToeServer.
 C:\Users\dangn\source\repos\TicTacToe\TicTacToeServer\obj\Debug\TicTacToeServer.exe
 C:\Users\dangn\source\repos\TicTacToe\TicTacToeServer\obj\Debug\TicTacToeServer.pdb
 C:\Users\dangn\source\repos\TicTacToe\TicTacToeServer\obj\Debug\TicTacToeServer.Form1.resources
+D:\_Csharp\TicTacToe\TicTacToeServer\bin\Debug\TicTacToeServer.exe.config
+D:\_Csharp\TicTacToe\TicTacToeServer\bin\Debug\TicTacToeServer.exe
+D:\_Csharp\TicTacToe\TicTacToeServer\bin\Debug\TicTacToeServer.pdb
+D:\_Csharp\TicTacToe\TicTacToeServer\obj\Debug\TicTacToeServer.csprojAssemblyReference.cache
+D:\_Csharp\TicTacToe\TicTacToeServer\obj\Debug\TicTacToeServer.Form1.resources
+D:\_Csharp\TicTacToe\TicTacToeServer\obj\Debug\TicTacToeServer.Properties.Resources.resources
+D:\_Csharp\TicTacToe\TicTacToeServer\obj\Debug\TicTacToeServer.csproj.GenerateResource.cache
+D:\_Csharp\TicTacToe\TicTacToeServer\obj\Debug\TicTacToeServer.exe
+D:\_Csharp\TicTacToe\TicTacToeServer\obj\Debug\TicTacToeServer.pdb
+D:\_Csharp\TicTacToe\TicTacToeServer\obj\Debug\TicTacToeServer.CreateRoomForm.resources
