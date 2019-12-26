@@ -20,6 +20,7 @@ namespace TicTacToeServer
     {
         System.Timers.Timer aTimer = new System.Timers.Timer();
         static int PORT;
+        static int TIME = 20;
         public Form1()
         {
 
@@ -32,26 +33,28 @@ namespace TicTacToeServer
 
         private void ATimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            
-                int time = Convert.ToInt32(labelTime.Text);
-                time--;
 
-                labelTime.Invoke((MethodInvoker)delegate () { labelTime.Text = time.ToString(); });
+            int time = Convert.ToInt32(labelTime.Text);
+            time--;
+
+            labelTime.Invoke((MethodInvoker)delegate () { labelTime.Text = time.ToString(); });
             if (time == 0)
             {
+
                 aTimer.Stop();
-              //  endGame = true;
-            //  flowLayoutPanel1.Invoke((MethodInvoker)delegate() { newDesk(); });
+
+                //  endGame = true;
+                //  flowLayoutPanel1.Invoke((MethodInvoker)delegate() { newDesk(); });
             }
 
-               
+
 
         }
         //Tao socket
         TcpClient client = new TcpClient();
         // Ket noi den server
         Stream stream;
-      
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -69,7 +72,8 @@ namespace TicTacToeServer
                         client.Connect("127.0.0.1", PORT);
                         joinSuccessfully = true;
 
-                    }catch(Exception e1)
+                    }
+                    catch (Exception e1)
                     {
                         joinSuccessfully = false;
                         MessageBox.Show("Không thể tham gia bàn!\n + Bàn đang chơi\n + Bàn không tồn tại", "Thất bại", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -80,10 +84,10 @@ namespace TicTacToeServer
 
             Thread thread = new Thread(delegate ()
             {
-                
+
 
                 // 1. connect
-               
+
                 stream = client.GetStream();
 
                 Console.WriteLine("Đã kết nối");
@@ -93,7 +97,8 @@ namespace TicTacToeServer
                 int bytesRead = stream.Read(buffer, 0, client.ReceiveBufferSize);
                 string receivedString = Encoding.UTF8.GetString(buffer, 0, bytesRead);
                 TicTacToeController.DESK_SIZE = Convert.ToInt32(receivedString);
-                groupBox2.Invoke((MethodInvoker)delegate () {
+                groupBox2.Invoke((MethodInvoker)delegate ()
+                {
                     labelDeskSize.Text = TicTacToeController.DESK_SIZE.ToString();
                     labelPort.Text = PORT.ToString();
                 });
@@ -103,19 +108,13 @@ namespace TicTacToeServer
                 {
 
 
-                     buffer = new byte[client.ReceiveBufferSize];
-                     bytesRead = stream.Read(buffer, 0, client.ReceiveBufferSize);
-                     receivedString = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                    if (receivedString.Equals("#endgame"))
-                    {
-                        endGame = true; 
-                        flowLayoutPanel1.Invoke((MethodInvoker)delegate () { refresh(); });
-                        labelTime.Invoke((MethodInvoker)delegate () { labelTime.Text = "10"; });
+                    buffer = new byte[client.ReceiveBufferSize];
+                    bytesRead = stream.Read(buffer, 0, client.ReceiveBufferSize);
+                    receivedString = Encoding.UTF8.GetString(buffer, 0, bytesRead);
 
-                    }
-                    else
+                    if (receivedString.Contains("!hit"))
                     {
-
+                        receivedString = receivedString.Replace("!hit", "");
 
                         Console.WriteLine(receivedString);
 
@@ -132,14 +131,57 @@ namespace TicTacToeServer
                         });
                         if (aTimer.Enabled == false)
                             aTimer.Start();
-                        labelTime.Invoke((MethodInvoker)delegate () { labelTime.Text = "10"; });
+                        labelTime.Invoke((MethodInvoker)delegate () { labelTime.Text = TIME.ToString(); });
                         flowLayoutPanel1.Invoke((MethodInvoker)delegate () { refresh(); });
+                    }
+
+
+                    else if (receivedString.Equals("!endgame"))
+                    {
+                        if (isMoved)
+                        {
+                            TicTacToeController.winnerNumber = 1;
+                            txtStatus.Invoke((MethodInvoker)delegate () { txtStatus.Text = "HẾT GIỜ! BẠN ĐÃ THAWSNG!"; });
+                        }
+                        else
+                        {
+                            TicTacToeController.winnerNumber = 2;
+                            txtStatus.Invoke((MethodInvoker)delegate () { txtStatus.Text = "HẾT GIỜ! BẠN ĐÃ THUA!"; });
+                        }
+                        this.Invoke((MethodInvoker)delegate () { this.Enabled = false; });
+
+                        endGame = true;
+                        this.Invoke((MethodInvoker)delegate () { this.Enabled = false; });
+                        flowLayoutPanel1.Invoke((MethodInvoker)delegate () { refresh(); });
+                        labelTime.Invoke((MethodInvoker)delegate () { labelTime.Text = TIME.ToString(); });
+
+                    }
+                    else if (receivedString.Equals("!newgame"))
+                    {
+                        newGame = true;
+                        this.Invoke((MethodInvoker)delegate () { this.Enabled = false; });
+                        endGame = true;
+                        flowLayoutPanel1.Invoke((MethodInvoker)delegate () { refresh(); });
+                        labelTime.Invoke((MethodInvoker)delegate () { labelTime.Text = TIME.ToString(); });
+                    }
+
+                    else if (receivedString.Equals("!2win"))
+                    {
+
+                        txtStatus.Invoke((MethodInvoker)delegate () { txtStatus.Text = "BẠN ĐÃ THUA!"; });
+                        this.Invoke((MethodInvoker)delegate () { this.Enabled = false; });
+
+
+                        endGame = true;
+                        flowLayoutPanel1.Invoke((MethodInvoker)delegate () { refresh(); });
+                        labelTime.Invoke((MethodInvoker)delegate () { labelTime.Text = TIME.ToString(); });
+
                     }
 
                 }
 
 
-            
+
                 // 4. close
                 stream.Close();
                 client.Close();
@@ -151,13 +193,14 @@ namespace TicTacToeServer
 
             });
             thread.Start();
-       
-           
+
+
         }
         private void newDesk()
         {
             isMoved = false;
-            txtStatus.Invoke((MethodInvoker)delegate () {
+            txtStatus.Invoke((MethodInvoker)delegate ()
+            {
                 txtStatus.Text = "CHIẾN THÔI!";
             });
             flowLayoutPanel1.Controls.Clear();
@@ -174,7 +217,7 @@ namespace TicTacToeServer
 
 
 
-                    temp.Width = flowLayoutPanel1.Width / (TicTacToeController.DESK_SIZE + 10);
+                    temp.Width =30;
                     temp.Height = temp.Width;
 
                     temp.Tag = new int[2] { i, j };
@@ -183,22 +226,14 @@ namespace TicTacToeServer
 
                 }
             }
+            flowLayoutPanel1.Enabled = true;
         }
 
         bool endGame = false;
+        bool newGame = false;
         private void refresh()
         {
-            if (!TicTacToeController.canMove() || endGame)
-            {
-                TicTacToeController.newGame();
-                endGame = false;
-                aTimer.Stop();
-
-                newDesk();
-
-               // return;
-
-            }
+           
             if (isMoved)
             {
                 flowLayoutPanel1.Enabled = false;
@@ -218,13 +253,13 @@ namespace TicTacToeServer
 
                         if (((int[])temp.Tag)[0] == i && ((int[])temp.Tag)[1] == j)
                         {
-                            if (TicTacToeController.desk[i, j] != 0 )
+                            if (TicTacToeController.desk[i, j] != 0)
                             {
 
                                 temp.Enabled = false;
 
                             }
-                          
+
 
                             if (TicTacToeController.desk[i, j] == 1)
                             {
@@ -246,6 +281,30 @@ namespace TicTacToeServer
                     }
                 }
             }
+
+            if (!TicTacToeController.canMove() || endGame || TicTacToeController.winnerNumber != 0)
+            {
+
+
+
+                TicTacToeController.newGame();
+                endGame = false;
+
+                aTimer.Stop();
+
+
+
+                if (newGame)
+                {
+                    this.Invoke((MethodInvoker)delegate () { this.Enabled = true; });
+                    newGame = false;
+                    newDesk();
+                }
+
+
+                // return;
+
+            }
         }
 
         bool isMoved = false;
@@ -253,20 +312,30 @@ namespace TicTacToeServer
         {
             int[] point = (int[])((Control)sender).Tag;
 
-           
-           send( point[0] + " " + point[1] + " " + 1);
+
+            send("!hit" + point[0] + " " + point[1] + " " + 1);
 
 
 
-           
+
             TicTacToeController.hit(point[0], point[1], 1);
             isMoved = true;
-            txtStatus.Invoke((MethodInvoker)delegate () {
+            txtStatus.Invoke((MethodInvoker)delegate ()
+            {
                 txtStatus.Text = "ĐẾN LƯỢT ĐỐI THỦ";
             });
+
+            if (TicTacToeController.winnerNumber == 1)
+            {
+                send("!1win");
+                txtStatus.Invoke((MethodInvoker)delegate () { txtStatus.Text = "BẠN ĐÃ THẮNG!"; });
+            }
+
+
+
             if (aTimer.Enabled == false)
                 aTimer.Start();
-            labelTime.Invoke((MethodInvoker)delegate () { labelTime.Text = "10"; });
+            labelTime.Invoke((MethodInvoker)delegate () { labelTime.Text = TIME.ToString(); });
             refresh();
         }
 

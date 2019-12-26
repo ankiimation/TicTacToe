@@ -25,9 +25,22 @@ namespace TicTacToeServer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.deskSize = Convert.ToInt32(txtDeskSize.Text);
-            DialogResult = DialogResult.OK;
-            Close();
+            int deskSizeTemp = 10;
+            if (radioButton1.Checked)
+            {
+                deskSizeTemp = 10;
+            }
+            else if (radioButton2.Checked)
+            {
+                deskSizeTemp = 20;
+            }
+          
+            
+                this.deskSize = deskSizeTemp;
+                DialogResult = DialogResult.OK;
+                Close();
+            
+           
         }
     }
 }

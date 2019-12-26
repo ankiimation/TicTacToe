@@ -31,25 +31,28 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtStatus = new System.Windows.Forms.TextBox();
-            this.labelTime = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.labelDeskSize = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.labelIPAddress = new System.Windows.Forms.Label();
             this.labelPort = new System.Windows.Forms.Label();
+            this.labelIPAddress = new System.Windows.Forms.Label();
+            this.labelTime = new System.Windows.Forms.Label();
+            this.txtStatus = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 13);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(802, 805);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(750, 750);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // button1
@@ -73,32 +76,6 @@
             this.groupBox1.Size = new System.Drawing.Size(264, 202);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 99);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Trạng thái:";
-            // 
-            // txtStatus
-            // 
-            this.txtStatus.Location = new System.Drawing.Point(7, 115);
-            this.txtStatus.Name = "txtStatus";
-            this.txtStatus.Size = new System.Drawing.Size(251, 20);
-            this.txtStatus.TabIndex = 1;
-            // 
-            // labelTime
-            // 
-            this.labelTime.AutoSize = true;
-            this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTime.Location = new System.Drawing.Point(101, 138);
-            this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(78, 55);
-            this.labelTime.TabIndex = 2;
-            this.labelTime.Text = "10";
             // 
             // groupBox2
             // 
@@ -153,6 +130,17 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "IP:";
             // 
+            // labelPort
+            // 
+            this.labelPort.AutoSize = true;
+            this.labelPort.BackColor = System.Drawing.Color.BurlyWood;
+            this.labelPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPort.Location = new System.Drawing.Point(175, 18);
+            this.labelPort.Name = "labelPort";
+            this.labelPort.Size = new System.Drawing.Size(64, 25);
+            this.labelPort.TabIndex = 7;
+            this.labelPort.Text = "1234";
+            // 
             // labelIPAddress
             // 
             this.labelIPAddress.AutoSize = true;
@@ -165,22 +153,57 @@
             this.labelIPAddress.TabIndex = 6;
             this.labelIPAddress.Text = "127.0.0.1";
             // 
-            // labelPort
+            // labelTime
             // 
-            this.labelPort.AutoSize = true;
-            this.labelPort.BackColor = System.Drawing.Color.BurlyWood;
-            this.labelPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPort.Location = new System.Drawing.Point(175, 18);
-            this.labelPort.Name = "labelPort";
-            this.labelPort.Size = new System.Drawing.Size(64, 25);
-            this.labelPort.TabIndex = 7;
-            this.labelPort.Text = "1234";
+            this.labelTime.AutoSize = true;
+            this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTime.Location = new System.Drawing.Point(101, 138);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(78, 55);
+            this.labelTime.TabIndex = 2;
+            this.labelTime.Text = "20";
+            // 
+            // txtStatus
+            // 
+            this.txtStatus.Location = new System.Drawing.Point(7, 115);
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.Size = new System.Drawing.Size(251, 20);
+            this.txtStatus.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 99);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Trạng thái:";
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.Red;
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label6.Location = new System.Drawing.Point(920, 218);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 23);
+            this.label6.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(827, 222);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "MÀU CỦA BẠN: ";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1097, 834);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -193,6 +216,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -211,6 +235,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelIPAddress;
         private System.Windows.Forms.Label labelPort;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }
 
